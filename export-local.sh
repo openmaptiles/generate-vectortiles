@@ -13,7 +13,7 @@ readonly COPY_CONCURRENCY=${COPY_CONCURRENCY:-10}
 readonly TILE_TIMEOUT=${TILE_TIMEOUT:-1800000}
 readonly MBTILES_NAME=${MBTILES_NAME:-tiles.mbtiles}
 readonly PARTS=${PARTS:-1}
-readonly PART=${PART:-1}
+readonly PART=${PART:-0}
 
 function export_local_mbtiles() {
     exec tilelive-copy \
