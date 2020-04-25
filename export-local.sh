@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -o errexit
 set -o pipefail
 set -o nounset
@@ -14,7 +14,9 @@ readonly TILE_TIMEOUT=${TILE_TIMEOUT:-1800000}
 readonly MBTILES_NAME=${MBTILES_NAME:-tiles.mbtiles}
 
 function export_local_mbtiles() {
-    exec tilelive-copy \
+    echo "Generating tiles into $EXPORT_DIR/$MBTILES_NAME for zooms $MIN_ZOOM..$MAX_ZOOM inside ($BBOX) using $COPY_CONCURRENCY threads"
+
+    filter_deprecation tilelive-copy \
         --scheme=pyramid \
         --bounds="$BBOX" \
         --timeout="$TILE_TIMEOUT" \
